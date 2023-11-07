@@ -9,3 +9,5 @@ This code can parse all [note animated emojis](https://googlefonts.github.io/not
 #### foresle: No
 
 ![wink](emojis/winking-face.webp)
+
+# FREEDOM FOR DANCING EMOJIS
