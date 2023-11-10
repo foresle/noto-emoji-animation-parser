@@ -17,12 +17,13 @@ emojis_descriptions = ((literal_eval('0x' + tr.find('a')['href'][1:]), slugify(t
 # Let's make the dict for the best experience in the future.
 # All emojis have saved with the same url, changes only their codes.
 # I will get only a webp format, but you can change link file extensions and file name for gifs, for example.
-all_emojis_links: dict = {}
-for code, description in emojis_descriptions:
-    all_emojis_links[code] = {
+all_emojis_links: dict = {
+    code: {
         'url': f'https://fonts.gstatic.com/s/e/notoemoji/latest/{hex(code)[2:]}/512.webp',
-        'file_name': description + '.webp'
+        'file_name': f'{description}.webp',
     }
+    for code, description in emojis_descriptions
+}
 
 
 async def load_emoji(url: str, file_name: str):
@@ -44,6 +45,11 @@ async def load_emojis():
 
 
 if __name__ == '__main__':
+
+    # Check if emojis folder exists
+    if not os.path.exists('emojis'):
+        os.makedirs('emojis')
+
     # Starts async downloading
     loop = asyncio.get_event_loop()
     loop.run_until_complete(load_emojis())
