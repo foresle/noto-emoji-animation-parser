@@ -1,5 +1,6 @@
 import argparse
 import asyncio
+import os
 import bs4
 import requests
 from slugify import slugify
